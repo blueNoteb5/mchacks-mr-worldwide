@@ -2,7 +2,7 @@
 
 Our project for the 2018 edition of McHacks
 
-## Inspiration
+## Inspiration  
 
 When travelling in a new place, it is often the case that one doesn't have an adequate amount of mobile data to search for information they need.
 
