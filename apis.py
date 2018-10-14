@@ -15,20 +15,20 @@ geocode_apikey = ""
 
 assert bing_apikey #for Bing search API
 
-#Gets weather.
+#Gets current weather.
 def getWeather(city):
-    
+
     #Parses into html string
     query=city
     toParse = {"address" : query}
     query = urllib.parse.urlencode(toParse)
-    
+
     #Gets latitude and longitude using google geocode API
     json.html=urllib.request.urlopen("https://maps.googleapis.com/maps/api/geocode/json?" + query + "&key=" + geocode_apikey).read()
     htmlData=json.loads(json.html)
     lat = (htmlData['results'][0]['geometry']['location']['lat'])
     lng = (htmlData['results'][0]['geometry']['location']['lng'])
-   
+
     City = [lat, lng]
     fio = ForecastIO.ForecastIO(weather_apikey, units=ForecastIO.ForecastIO.UNITS_SI, lang=ForecastIO.ForecastIO.LANG_ENGLISH, latitude=City[0], longitude=City[1])
 
@@ -81,7 +81,7 @@ def getDirections(origin, destination, mode):
     except IndexError:
         message = "please enter a valid route"
         return message
-    
+
 def getNews(location):
     search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
     search_term = location
